@@ -59,6 +59,7 @@ body {
     padding: 1rem;
 }
 
+/* Efecto al pasar el mouse frente al enlace de cada menu */
 .nav-principal a:hover {
     background-color: var(--primario);
     color: var(--obscuro);
