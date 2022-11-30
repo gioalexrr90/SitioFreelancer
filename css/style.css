@@ -1,3 +1,15 @@
+/* 
+Definir paleta de colores
+Se agregar varaibles 
+*/
+:root {
+    --blanco: #FFFFFF;
+    --obscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+}
+
 /* Hack para hacer responsive y uso de REM mas facil */
 
 /*
@@ -7,16 +19,6 @@
 
 1rem = 10px
 */
-
-/* Definir paleta de colores */
-:root {
-    --blanco: #FFFFFF;
-    --obscuro: #212121;
-    --primario: #FFC107;
-    --secundario: #0097A7;
-    --gris: #757575;
-}
-
 html {
     font-size: 62.5%;
 }
@@ -33,4 +35,31 @@ body {
 
 .titulo span {
     font-size: 2rem; /* 2rem ahora equivalen a 20px */
+}
+
+.contenedor {
+    width: 120rem;
+    margin: 0 auto;
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.nav-principal {
+    display: flex; /* Se agrega la vista Flex */
+    justify-content: space-between; /* Se agrega espaciado entre los enlaces del menu */
+}
+
+.nav-principal a {
+    color: var(--blanco);
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.nav-principal a:hover {
+    background-color: var(--primario);
+    color: var(--obscuro);
 }
