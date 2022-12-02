@@ -59,6 +59,25 @@ h1, h2, h3 {
     margin: 0 auto;
 }
 
+.btn {
+    background-color: var(--secundario);
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    color: var(--blanco);
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase; /* Transforma el texto en mayusculas */
+    font-weight: bold;
+    width: 90%;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .btn {
+        width: auto;
+    }
+}
+
 .nav-bg {
     background-color: var(--secundario);
 }
