@@ -21,16 +21,33 @@ Se agregar varaibles
 */
 html {
     font-size: 62.5%;
+    /* Se aplica BoxModel, referencia https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+    box-sizing: border-box;
 }
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
 
 body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;
 }
 
-.titulo {
-    text-align: center;
+h1 {
     font-size: 3.8rem; /* 3.8rem ahora equivalen a 38px */
+}
+
+h2 {
+    font-size: 2.8rem; /* 3.8rem ahora equivalen a 28px */
+}
+
+h3 {
+    font-size: 1.8rem; /* 3.8rem ahora equivalen a 18px */
+}
+
+h1, h2, h3 {
+    text-align: center;
 }
 
 .titulo span {
@@ -72,4 +89,31 @@ body {
 .nav-principal a:hover {
     background-color: var(--primario);
     color: var(--obscuro);
+}
+
+.hero {
+    background-image: url('/img/hero.jpg');
+    background-repeat: no-repeat; /* Permite que no se repita la imagen */
+    background-size: cover; /* Permite tomar todo el ancho de la pantalla de la imagen */
+    height: 45rem; /* Se aplican 450px de alto a la imagen */
+    position: relative; /* Para posicionar hero-content se agrega relative a la "clase padre" */
+}
+
+.hero-content {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7); /* Se agrega un efecto de tramsparencia en la imagen */
+    /* Se crea una especial de cuadrado de color negro dentro del contenido del hero */
+    width: 100%;
+    height: 100%;
+
+    /* Codigo usado para alinear el contenido del hero */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h2,
+.hero-content p {
+    color: var(--blanco); /* Se agrega un color blanco al texto del contenido hero */
 }
