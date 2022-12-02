@@ -38,7 +38,7 @@ body {
 }
 
 .contenedor {
-    width: 120rem;
+    max-width: 120rem;
     margin: 0 auto;
 }
 
@@ -48,7 +48,16 @@ body {
 
 .nav-principal {
     display: flex; /* Se agrega la vista Flex */
-    justify-content: space-between; /* Se agrega espaciado entre los enlaces del menu */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Se crea un media querire para pantallas mayores a 768px */
+@media (min-width: 768px) {
+    .nav-principal {
+        flex-direction: row;
+        justify-content: space-between; /* Se agrega espaciado entre los enlaces del menu */
+    }
 }
 
 .nav-principal a {
