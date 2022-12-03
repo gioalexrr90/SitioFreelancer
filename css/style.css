@@ -8,6 +8,7 @@ Se agregar varaibles
     --primario: #FFC107;
     --secundario: #0097A7;
     --gris: #757575;
+    --grisClaro: #DFE9F3;
 }
 
 /* Hack para hacer responsive y uso de REM mas facil */
@@ -21,16 +22,44 @@ Se agregar varaibles
 */
 html {
     font-size: 62.5%;
+    /* Se aplica BoxModel, referencia https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
 }
+
+/* Scroll snap */
+.nav-bg,
+.service,
+.form {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
 
 body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;
+    /* background: linear-gradient(0deg, rgba(223,233,243,1) 0%, rgba(233,241,250,1) 50%, rgba(255,255,255,1) 100%); */
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
 }
 
-.titulo {
-    text-align: center;
+h1 {
     font-size: 3.8rem; /* 3.8rem ahora equivalen a 38px */
+}
+
+h2 {
+    font-size: 2.8rem; /* 3.8rem ahora equivalen a 28px */
+}
+
+h3 {
+    font-size: 1.8rem; /* 3.8rem ahora equivalen a 18px */
+}
+
+h1, h2, h3 {
+    text-align: center;
 }
 
 .titulo span {
@@ -38,8 +67,58 @@ body {
 }
 
 .contenedor {
-    width: 120rem;
+    max-width: 120rem;
     margin: 0 auto;
+}
+
+.btn {
+    background-color: var(--secundario);
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    color: var(--blanco);
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase; /* Transforma el texto en mayusculas */
+    font-weight: bold;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 768px) {
+    .btn {
+        width: auto;
+    }
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 122, 0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Utilidades */
+.w-100{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    justify-content: flex-end;
 }
 
 .nav-bg {
@@ -48,7 +127,16 @@ body {
 
 .nav-principal {
     display: flex; /* Se agrega la vista Flex */
-    justify-content: space-between; /* Se agrega espaciado entre los enlaces del menu */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Se crea un media querire para pantallas mayores a 768px */
+@media (min-width: 768px) {
+    .nav-principal {
+        flex-direction: row;
+        justify-content: space-between; /* Se agrega espaciado entre los enlaces del menu */
+    }
 }
 
 .nav-principal a {
@@ -59,7 +147,134 @@ body {
     padding: 1rem;
 }
 
+/* Efecto al pasar el mouse frente al enlace de cada menu */
 .nav-principal a:hover {
     background-color: var(--primario);
     color: var(--obscuro);
+}
+
+.hero {
+    background-image: url('/img/hero.jpg');
+    background-repeat: no-repeat; /* Permite que no se repita la imagen */
+    background-size: cover; /* Permite tomar todo el ancho de la pantalla de la imagen */
+    height: 45rem; /* Se aplican 450px de alto a la imagen */
+    position: relative; /* Para posicionar hero-content se agrega relative a la "clase padre" */
+    margin-bottom: 2rem;
+}
+
+.hero-content {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7); /* Se agrega un efecto de tramsparencia en la imagen */
+    /* Se crea una especial de cuadrado de color negro dentro del contenido del hero */
+    width: 100%;
+    height: 100%;
+
+    /* Codigo usado para alinear el contenido del hero */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h2,
+.hero-content p {
+    color: var(--blanco); /* Se agrega un color blanco al texto del contenido hero */
+}
+
+/* Servicios */
+@media (min-width: 768px) {
+    .services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem; /* Se agrega una separaciçon entre las columnas (similar a un margin pero en grid */
+    }
+}
+
+.service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.service p {
+    line-height: 2;
+    text-align: center;
+}
+
+.service .icons {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Formulario */
+.form {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /* Valor el valor mas chico si los 600px o el 100% */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.form fieldset {
+    border: none;
+}
+
+.form legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 15rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
 }
