@@ -24,6 +24,15 @@ html {
     font-size: 62.5%;
     /* Se aplica BoxModel, referencia https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
     box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+/* Scroll snap */
+.nav-bg,
+.service,
+.form {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
 *, *:before, *:after {
